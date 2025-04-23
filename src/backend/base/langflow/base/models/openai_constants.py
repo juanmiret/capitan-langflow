@@ -9,6 +9,7 @@ OPENAI_MODEL_NAMES = [
     "gpt-4-turbo-preview",
     "gpt-4",
     "gpt-3.5-turbo",
+    "o4-mini",
 ]
 
 OPENAI_REASONING_MODEL_NAMES = [

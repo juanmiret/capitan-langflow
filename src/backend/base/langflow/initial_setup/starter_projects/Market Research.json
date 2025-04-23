@@ -1504,6 +1504,7 @@
                   "gpt-4-turbo-preview",
                   "gpt-4",
                   "gpt-3.5-turbo",
+                  "o4-mini",
                   "o1"
                 ],
                 "placeholder": "",
@@ -1654,6 +1655,7 @@
               "system_prompt": {
                 "_input_type": "MultilineInput",
                 "advanced": false,
+                "copy_field": false,
                 "display_name": "Agent Instructions",
                 "dynamic": false,
                 "info": "System Prompt: Initial instructions and context provided to guide the agent's behavior.",
@@ -1661,6 +1663,7 @@
                   "Message"
                 ],
                 "list": false,
+                "list_add_label": "Add More",
                 "load_from_db": false,
                 "multiline": true,
                 "name": "system_prompt",
@@ -1672,7 +1675,7 @@
                 "trace_as_input": true,
                 "trace_as_metadata": true,
                 "type": "str",
-                "value": "You are an expert business research agent. Your task is to gather comprehensive information about companies.   When researching a company, focus on the following key areas: 1. Basic company information (website, domain, social presence) 2. Product and pricing information 3. Technical capabilities and integrations 4. Market positioning and target audience 5. Key features and offerings  For the company/domain provided, search thoroughly and provide detailed information about: - Their main website and domain - Their pricing structure - Product features and capabilities - Market presence and focus - Technical offerings like APIs - Social media presence, especially LinkedIn  Search comprehensively and provide detailed, factual information that will help determine: - Pricing tiers and structure - Whether they offer free trials - If they have enterprise solutions - Their technical capabilities - Their primary market (B2B/B2C)  INPUT: {input}  Respond with detailed, factual information about these aspects, avoiding speculation. Include direct quotes or specific information you find."
+                "value": "You are a helpful assistant that can use tools to answer questions and perform tasks."
               },
               "temperature": {
                 "_input_type": "FloatInput",
@@ -2384,6 +2387,7 @@
                   "gpt-4-turbo-preview",
                   "gpt-4",
                   "gpt-3.5-turbo",
+                  "o4-mini",
                   "o1"
                 ],
                 "options_metadata": [],

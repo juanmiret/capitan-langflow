@@ -1,0 +1,61 @@
+# fly.toml app configuration file generated for capitan-langflow on 2025-04-18T23:44:10-03:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = 'capitan-langflow'
+primary_region = 'eze'
+kill_signal = 'SIGINT'
+kill_timeout = '5s'
+swap_size_mb = 2048
+
+[build]
+  dockerfile = './docker/render.Dockerfile'
+
+[env]
+  LANGFLOW_DATABASE_URL = 'postgresql://capitan_langflow:aCuddp6U62uW6WW@capitan-db-prod.flycast:5432/capitan_langflow?sslmode=disable'
+  LANGFLOW_HOST = '0.0.0.0'
+  LANGFLOW_LOG_LEVEL = 'INFO'
+  LANGFLOW_PORT = '10000'
+  LANGFLOW_AUTO_LOGIN = "False"
+  LANGFLOW_SUPERUSER = 'capitan'
+  LANGFLOW_SUPERUSER_PASSWORD = 'Tacuari182-'
+  LANGFLOW_SECRET_KEY = 'cjnyjU_WzUJVRm19qLYeWruO-tzNU6eTNqAsW-uGUWI'
+
+
+[[mounts]]
+  source = 'langflow_data'
+  destination = '/data'
+
+[[services]]
+  protocol = 'tcp'
+  internal_port = 10000
+  processes = ['app']
+
+  [[services.ports]]
+    port = 80
+    handlers = ['http']
+    force_https = true
+
+  [[services.ports]]
+    port = 443
+    handlers = ['tls', 'http']
+
+  [services.concurrency]
+    type = 'connections'
+    hard_limit = 25
+    soft_limit = 20
+
+  [[services.http_checks]]
+    interval = '10s'
+    timeout = '2s'
+    grace_period = '5s'
+    method = 'get'
+    path = '/health_check'
+    protocol = 'http'
+    tls_skip_verify = false
+
+[[vm]]
+  memory = '1gb'
+  cpu_kind = 'shared'
+  cpus = 1
